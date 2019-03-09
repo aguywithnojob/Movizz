@@ -1,21 +1,66 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<nav class="navbar navbar-light bg-light">
+      <div class="col-md-12">
+          <input class="form-control" name="searchStr" [(ngModel)]="searchStr" (keyup)="Search()" placeholder="Search for movie/TV-Shows" aria-label="Search">
+      </div>
+      <div class="col-md-12 sreached" style="margin-top:5px;">
+          <ul *ngFor="let x of searching">
+              <img *ngIf="x['original_title']" src="http://image.tmdb.org/t/p/w500{{x['poster_path']}}" alt="" width="50px" height="50px">
+            <li *ngIf="x['original_title']" style="  list-style-type: none;">{{x["original_title"]+"("+x["vote_average"]+")"}}</li>
+              
+          </ul>
+      </div>
+   
+  </nav>
 
-<router-outlet></router-outlet>
+
+
+
+<div class="container" >
+  <div class="row">
+    <div class="col-md-12"><h1 class="appname">Movies</h1></div>
+    <div class="col-md-8"><h3 class="toprated">Trending Movies</h3>
+      <ul *ngFor="let x of trendingmovies" class="movieslist">
+        <div class="movie-detail">
+          <div class="row">
+              <div class="col-md-4 image">
+                  <img *ngIf="x['original_title']" src="http://image.tmdb.org/t/p/w500{{x['poster_path']}}" alt="" width="200px" height="300px">
+              </div>
+                <div class="col-md-6 details">
+                    <li *ngIf="x['original_title']">{{x["original_title"]}}</li>
+                    <p *ngIf="x['original_title']">({{x["vote_average"]}}/10)</p>
+                    <p style=" color: #ffd89b ;font-size:15px; " *ngIf="x['original_title']">{{x.overview}}</p>
+                    <br>
+                </div>
+
+          </div>
+          
+
+           
+        </div>
+       
+      </ul>
+    
+    </div>
+    <div class="col-md-4" style="text-align:right;"><h3 class="upcoming">Upcoming Movies</h3>
+      <ul *ngFor="let x of upcoming" class="movieslist">
+        <img *ngIf="x['original_title']" src="http://image.tmdb.org/t/p/w500{{x['poster_path']}}" alt="" width="100px" height="150px">
+
+        <li *ngIf="x['original_title']" style="display:block;">{{x["original_title"]}}</li>
+        <p *ngIf="x['original_title']" style="display:block;">({{x["vote_average"]}}/10)</p>
+        <p *ngIf="x['original_title']" style="display:block;">Release:{{x["release_date"]}}</p>
+        <br>
+      </ul>
+      
+    </div>
+    
+  </div>
+  <div class="row " >
+    <div class="col-md-6 ">
+      
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <router-outlet></router-outlet> -->

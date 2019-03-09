@@ -20,8 +20,11 @@
     "@angular/platform-browser": "~7.0.0",
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
+    "@types/rx": "^4.1.1",
+    "add": "^2.0.6",
     "core-js": "^2.5.4",
     "rxjs": "~6.3.3",
+    "yarn": "^1.13.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
